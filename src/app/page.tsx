@@ -1,17 +1,28 @@
+"use client";
+
 import { RiUser6Line, RiBuilding2Line } from "react-icons/ri";
 import Testimonials from "./components/TestimonialsCarousel";
 import Works from "./components/WorksCarousel";
+import Navbar from "./components/NavBar";
+import { useState } from "react";
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="bg-white">
+      <Navbar />
+
       {/* --------------------------------------------------------------------------------------------------- 
       
                                                     HERO SECTION
       
       --------------------------------------------------------------------------------------------------- */}
 
-      <section className="w-full h-screen grid grid-rows-2">
+      <section id="hero" className="w-full h-screen grid grid-rows-2">
         <div className="w-full flex justify-center items-end mb-4">
           <div className="rounded-full w-48 h-48 border-4 border-black">
             <span className="w-full h-full flex items-center justify-center">
@@ -43,8 +54,8 @@ export default function Home() {
       
       --------------------------------------------------------------------------------------------------- */}
 
-      <section className="w-full h-screen flex flex-col px-2">
-        <h2 className="text-2xl font-bold mb-4 text-center underline">
+      <section id="works" className="w-full h-screen flex flex-col px-2">
+        <h2 className="text-2xl font-bold mb-4 text-center underline mt-[60px]">
           Works :
         </h2>
 
@@ -59,8 +70,8 @@ export default function Home() {
       
       --------------------------------------------------------------------------------------------------- */}
 
-      <section className="w-full h-screen flex flex-col px-2">
-        <h2 className="text-2xl font-bold mb-4 text-center underline">
+      <section id="experiences" className="w-full h-screen flex flex-col px-2">
+        <h2 className="text-2xl font-bold mb-4 text-center underline mt-[60px]">
           Recent Experiences :
         </h2>
 
@@ -177,8 +188,8 @@ export default function Home() {
       
       --------------------------------------------------------------------------------------------------- */}
 
-      <section className="w-full h-screen flex flex-col px-2">
-        <h2 className="text-2xl font-bold mb-4 text-center underline">
+      <section id="testimonials" className="w-full h-screen flex flex-col px-2">
+        <h2 className="text-2xl font-bold mb-4 text-center underline mt-[60px]">
           Testimonials :
         </h2>
 
@@ -193,8 +204,8 @@ export default function Home() {
       
       --------------------------------------------------------------------------------------------------- */}
 
-      <section className="w-full h-screen flex flex-col px-2">
-        <h2 className="text-2xl font-bold mb-4 text-center underline">
+      <section id="contact" className="w-full h-screen flex flex-col px-2">
+        <h2 className="text-2xl font-bold mb-4 text-center underline mt-[60px]">
           Contact Me :
         </h2>
         <div className="w-full h-full flex flex-col items-center justify-center">
@@ -250,13 +261,40 @@ export default function Home() {
             {/* Submit Button */}
             <div className="w-full flex justify-center">
               <button
-                type="submit"
+                type="button" // Set to "button" to prevent form submission
+                onClick={openModal}
                 className="px-6 py-2 rounded-md border-2 font-bold border-black hover:bg-black hover:text-white focus:outline-none"
               >
                 Submit
               </button>
             </div>
           </form>
+
+          {/* Modal */}
+          {isModalOpen && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+              <div className="bg-white rounded-md p-6 w-80 text-center">
+                <p>
+                  This form is for demonstration purposes only. Please visit my{" "}
+                  <a
+                    href="https://portfolio.devlyx.fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    portfolio
+                  </a>{" "}
+                  to contact me.
+                </p>
+                <button
+                  onClick={closeModal}
+                  className="mt-4 px-6 py-2 rounded-md border-2 font-bold border-black hover:bg-black hover:text-white focus:outline-none"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </div>
