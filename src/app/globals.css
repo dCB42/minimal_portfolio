@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.screen {
+  height: 100vh;
+  width: 100vw;
+}
+
+@keyframes wheel {
+  to {
+    opacity: 0;
+    top: 50px;
+  }
+}
+
+@layer utilities {
+  .animate-wheel {
+    @apply animate-[wheel_2s_infinite];
+  }
+}
