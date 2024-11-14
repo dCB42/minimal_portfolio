@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Portfolio Grayscale",
+  description: "Ultra minimal portfolio - Template",
 };
 
 export default function RootLayout({
